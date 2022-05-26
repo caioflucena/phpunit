@@ -20,10 +20,11 @@ jobs:
         configuration: tests/phpunit.xml
         bootstrap: tests/bootstrap.php
         php_extensions: xdebug
-        args: --coverage-clover ./clover.xml
+        args: --coverage-clover ./tests/.phpunit.cache/code-coverage/clover.xml
         memory_limit: 256M
     - uses: timkrase/phpunit-coverage-badge@v1.2.0
       with:
-        coverage_badge_path: 'badge-coverage.svg'
+        report: ./tests/.phpunit.cache/code-coverage/clover.xml
+        coverage_badge_path: './tests/.phpunit.cache/code-coverage/badge-coverage.svg'
         push_badge: true
         repo_token: ${{ secrets.GITHUB_TOKEN }}
