@@ -18,6 +18,7 @@ jobs:
         configuration: tests/phpunit.xml
         bootstrap: tests/bootstrap.php
         php_extensions: xdebug
+        coverage: xdebug
         args: --coverage-clover clover.xml
         memory_limit: 256M
     - uses: timkrase/phpunit-coverage-badge@v1.2.0
