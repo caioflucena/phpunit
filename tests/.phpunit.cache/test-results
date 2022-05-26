@@ -1,0 +1,1 @@
+{"version":1,"defects":[],"times":{"Tests\\FooTest::test_constructor":0.006,"Tests\\FooTest::test_getFoo":0.001,"Tests\\FooTest::test_getBar":0}}
