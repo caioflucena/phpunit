@@ -14,3 +14,6 @@ jobs:
         ssh_key: ${{ secrets.SSH_KEY }}
         ssh_key_pub: ${{ secrets.SSH_KEY_PUB }}
     - uses: php-actions/phpunit@v3
+      with:
+        configuration: tests/phpunit.xml
+        memory_limit: 256M
