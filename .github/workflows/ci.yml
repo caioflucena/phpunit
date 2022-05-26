@@ -8,21 +8,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup PHP with Xdebug
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '7.4'
-        coverage: xdebug
     - uses: php-actions/composer@v6
       with:
         php_version: '7.4'
         ssh_key: ${{ secrets.SSH_KEY }}
         ssh_key_pub: ${{ secrets.SSH_KEY_PUB }}
     - uses: php-actions/phpunit@v3
+      env:
+        XDEBUG_MODE: coverage
       with:
         configuration: tests/phpunit.xml
         bootstrap: tests/bootstrap.php
-        args: --coverage-clover clover.xml
+        php_extensions: xdebug
+        args: tests --coverage-clover ./coverage.xml
         memory_limit: 256M
     - uses: timkrase/phpunit-coverage-badge@v1.2.0
       with:
