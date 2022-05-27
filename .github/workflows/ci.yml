@@ -28,4 +28,3 @@ jobs:
         coverage_badge_path: './tests/.phpunit.cache/code-coverage/badge-coverage.svg'
         push_badge: true
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        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
