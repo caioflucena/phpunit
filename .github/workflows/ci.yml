@@ -20,7 +20,7 @@ jobs:
         configuration: tests/phpunit.xml
         bootstrap: tests/bootstrap.php
         php_extensions: xdebug
-        args: --coverage-clover ./tests/.phpunit.cache/code-coverage/clover.xml
+        args: --coverage-text
         memory_limit: 256M
     - uses: schneegans/dynamic-badges-action@v1.4.0
       with:
