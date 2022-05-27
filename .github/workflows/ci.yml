@@ -22,12 +22,10 @@ jobs:
         php_extensions: xdebug
         args: --coverage-clover ./tests/.phpunit.cache/code-coverage/clover.xml
         memory_limit: 256M
-    - uses: schneegans/dynamic-badges-action@v1.0.0
+    - uses: timkrase/phpunit-coverage-badge@v1.2.0
       with:
-        auth: ${{ secrets.GIST_SECRET }}
-        gistID: 5335f3fbe80fc381f64b75243e5cbd45
-        filename: phpunit__${{ env.BRANCH }}.json
-        label: Test Coverage
-        message: ${{ env.COVERAGE }}
-        color: green
-        namedLogo: jest
+        report: ./tests/.phpunit.cache/code-coverage/clover.xml
+        coverage_badge_path: './tests/.phpunit.cache/code-coverage/badge-coverage.svg'
+        push_badge: true
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        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
