@@ -25,24 +25,6 @@ jobs:
     # Only run the coverage once
     - name: Get Coverage for badge
       run: |
-        #SUMMARY="$(npm test -- --coverageReporters='text-summary' | tail -2 | head -1)"
-        #TOKENS=($SUMMARY)
-        ## process.env.COVERAGE = '31.93%';
-        #echo "COVERAGE=$(echo ${TOKENS[2]})" >> $GITHUB_ENV
-
-        ## var REF = 'refs/pull/27/merge.json';
-        #REF=${{ github.ref }}
-        ## console.log('github.ref: ' + REF);
-        #echo "github.ref: $REF"
-        ## var PATHS = REF.split('/');
-        #IFS='/' read -ra PATHS <<< "$REF"
-        ## var BRANCH_NAME = PATHS[1] + '_' + PATHS[2];
-        #BRANCH_NAME="${PATHS[1]}_${PATHS[2]}"
-        ## console.log(BRANCH_NAME); // 'pull_27'
-        #echo $BRANCH_NAME
-        ## process.env.BRANCH = 'pull_27';
-        #echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
-
         COVERAGE_MESSAGE="$(cat ./tests/.phpunit.cache/code-coverage/clover.txt | grep Lines: | head -1 | grep -Po '\d+?(\.\d+)%')"
         echo "COVERAGE_MESSAGE=$(echo ${COVERAGE_MESSAGE})" >> $GITHUB_ENV
         COVERAGE_VALUE="$(echo ${COVERAGE_MESSAGE} | grep -Po '\d+?(\.\d+)')"
