@@ -22,7 +22,6 @@ jobs:
         php_extensions: xdebug
         args: --coverage-text=./tests/.phpunit.cache/code-coverage/clover.txt
         memory_limit: 256M
-    # Only run the coverage once
     - name: Get Coverage for badge
       run: |
         COVERAGE_MESSAGE="$(cat ./tests/.phpunit.cache/code-coverage/clover.txt | grep Lines: | head -1 | grep -Po '\d+?(\.\d+)%')"
