@@ -45,10 +45,9 @@ jobs:
 
         COVERAGE_MESSAGE="$(cat ./tests/.phpunit.cache/code-coverage/clover.txt | grep Lines: | head -1 | grep -Po '\d+?(\.\d+)%')"
         echo "COVERAGE_MESSAGE=$(echo ${COVERAGE_MESSAGE})" >> $GITHUB_ENV
-        COVERAGE_MESSAGEX="$(echo ${COVERAGE_MESSAGE} | grep -Po '\d+?(\.\d+)')"
-        echo "COVERAGE_VALUE=$(echo $(echo ${COVERAGE_MESSAGE} | grep -Po '\d+?(\.\d+)'))" >> $GITHUB_ENV
+        COVERAGE_VALUE="$(echo ${COVERAGE_MESSAGE} | grep -Po '\d+?(\.\d+)')"
+        echo "COVERAGE_VALUE=$(echo ${COVERAGE_VALUE})" >> $GITHUB_ENV
         echo ${COVERAGE_MESSAGE}
-        echo ${COVERAGE_MESSAGEX}
         echo ${COVERAGE_VALUE}
         echo ${GITHUB_REF##*/}
     - uses: schneegans/dynamic-badges-action@v1.4.0
