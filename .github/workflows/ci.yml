@@ -29,10 +29,10 @@ jobs:
     # Only run the coverage once
     - name: Get Coverage for badge
       run: |
-        SUMMARY="$(npm test -- --coverageReporters='text-summary' | tail -2 | head -1)"
+        COVERAGE="$(cat ./tests/.phpunit.cache/code-coverage/clover.txt | grep Lines: | head -1 | grep -Po '\d+?(\.\d+)%')"
         TOKENS=($SUMMARY)
         # process.env.COVERAGE = '31.93%';
-        echo "COVERAGE=$(echo ${TOKENS[2]})" >> $GITHUB_ENV
+        echo "$(echo ${COVERAGE})" >> $GITHUB_ENV
 
         # var REF = 'refs/pull/27/merge.json';
         REF=${{ github.ref }}
