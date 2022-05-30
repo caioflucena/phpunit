@@ -31,5 +31,3 @@ jobs:
         message: 75%
         color: green
         namedLogo: phpUnit
-    - name: Test secret
-      run: echo "git secret ${{ secrets.GIST_SECRET }}"
