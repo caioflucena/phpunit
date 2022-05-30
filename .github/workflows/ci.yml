@@ -22,13 +22,17 @@ jobs:
         php_extensions: xdebug
         args: --coverage-text
         memory_limit: 256M
+    - name: QWE
+      env:
+        BADGE_COLOR: orange
+        BADGE_PERCENT: 80
     - uses: schneegans/dynamic-badges-action@v1.4.0
       with:
         auth: ${{ secrets.GIST_SECRET }}
         gistID: c941c93c26d8b0f8355afef39db4e148
         filename: phpunit__${{ env.BRANCH }}.json
         label: Test Coverage
-        message: ${{ $BADGE_PERCENT }}
+        message: $BADGE_PERCENT
         color: BADGE_COLOR
         namedLogo: phpUnit
     - name: Clear Cache
