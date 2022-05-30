@@ -28,6 +28,6 @@ jobs:
         gistID: c941c93c26d8b0f8355afef39db4e148
         filename: phpunit__${{ env.BRANCH }}.json
         label: Test Coverage
-        message: 75%
+        message: 45%
         color: green
         namedLogo: phpUnit
