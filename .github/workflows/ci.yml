@@ -4,7 +4,7 @@ on: [push]
 
 env:
   BADGE_COLOR: orange
-  BADGE_PERCENT: 87
+  BADGE_PERCENT: 88
 
 jobs:
   build-test:
@@ -35,6 +35,7 @@ jobs:
         message: ${{ env.BADGE_PERCENT }}%
         color: ${{ env.BADGE_COLOR }}
         namedLogo: phpUnit
+        cacheSeconds: 0
     - name: refresh coverage badge
       uses: fjogeleit/http-request-action@master
       with:
