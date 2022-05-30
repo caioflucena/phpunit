@@ -4,7 +4,7 @@ on: [push]
 
 env:
   BADGE_COLOR: orange
-  BADGE_PERCENT: 80
+  BADGE_PERCENT: 78
 
 jobs:
   build-test:
