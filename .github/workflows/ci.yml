@@ -52,8 +52,10 @@ jobs:
         filename: phpunit__${{ env.BRANCH }}.json
         label: Test Coverage
         message: ${{ env.COVERAGE }}
-        color: ${{ env.BADGE_COLOR }}
         namedLogo: phpUnit
+        valColorRange: ${{ env.COVERAGE }}
+        maxColorRange: 100
+        minColorRange: 0
     - name: refresh coverage badge
       uses: fjogeleit/http-request-action@master
       with:
