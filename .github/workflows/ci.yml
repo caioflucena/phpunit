@@ -2,6 +2,10 @@ name: CI
 
 on: [push]
 
+env:
+  BADGE_COLOR: orange
+  BADGE_PERCENT: 80
+
 jobs:
   build-test:
     runs-on: ubuntu-latest
@@ -22,10 +26,6 @@ jobs:
         php_extensions: xdebug
         args: --coverage-text
         memory_limit: 256M
-    - name: QWE
-      env:
-        BADGE_COLOR: orange
-        BADGE_PERCENT: 80
     - uses: schneegans/dynamic-badges-action@v1.4.0
       with:
         auth: ${{ secrets.GIST_SECRET }}
