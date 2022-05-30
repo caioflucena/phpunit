@@ -34,7 +34,7 @@ class FooTest extends TestCase
 
     /**
      * 
-     * /
+     */
     public function test_getBar()
     {
         $foo = new Foo("foo", "bar");
