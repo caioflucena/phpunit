@@ -44,7 +44,7 @@ jobs:
         #echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
 
         COVERAGE="$(cat ./tests/.phpunit.cache/code-coverage/clover.txt | grep Lines: | head -1 | grep -Po '\d+?(\.\d+)%')"
-        echo "$(echo ${COVERAGE})" >> $GITHUB_ENV
+        echo "COVERAGE=$(echo ${COVERAGE})" >> $GITHUB_ENV
     - uses: schneegans/dynamic-badges-action@v1.4.0
       with:
         auth: ${{ secrets.GIST_SECRET }}
