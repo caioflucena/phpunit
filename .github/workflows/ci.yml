@@ -2,10 +2,6 @@ name: CI
 
 on: [push]
 
-env:
-  BADGE_COLOR: orange
-  BADGE_PERCENT: 89
-
 jobs:
   build-test:
     runs-on: ubuntu-latest
@@ -49,11 +45,12 @@ jobs:
 
         COVERAGE="$(cat ./tests/.phpunit.cache/code-coverage/clover.txt | grep Lines: | head -1 | grep -Po '\d+?(\.\d+)%')"
         echo "$(echo ${COVERAGE})" # >> $GITHUB_ENV
+        echo ${{ env.COVERAGE }}
     - uses: schneegans/dynamic-badges-action@v1.4.0
       with:
         auth: ${{ secrets.GIST_SECRET }}
         gistID: c941c93c26d8b0f8355afef39db4e148
-        filename: phpunit__${{ env.BRANCH }}.json
+        filename: ${{ github.repository }}__${{ env.BRANCH }}.json
         label: Test Coverage
         message: ${{ env.COVERAGE }}
         color: ${{ env.BADGE_COLOR }}
