@@ -54,7 +54,7 @@ jobs:
       with:
         auth: ${{ secrets.GIST_SECRET }}
         gistID: c941c93c26d8b0f8355afef39db4e148
-        filename: phpunit__${{ env.BRANCH }}.json
+        filename: phpunit__${GITHUB_REF##*/}.json
         label: Test Coverage
         message: ${{ env.COVERAGE_MESSAGE }}
         namedLogo: phpUnit
