@@ -29,9 +29,6 @@ jobs:
         COVERAGE_VALUE="$(echo ${COVERAGE_MESSAGE} | grep -Po '\d+?(\.\d+)')"
         echo "COVERAGE_VALUE=$(echo ${COVERAGE_VALUE})" >> $GITHUB_ENV
         echo "BRANCH_NAME=$(echo ${GITHUB_REF##*/})" >> $GITHUB_ENV
-        echo ${COVERAGE_MESSAGE}
-        echo ${COVERAGE_VALUE}
-        echo ${BRANCH_NAME}
     - uses: schneegans/dynamic-badges-action@v1.4.0
       with:
         auth: ${{ secrets.GIST_SECRET }}
