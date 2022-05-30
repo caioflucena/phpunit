@@ -43,17 +43,20 @@ jobs:
         ## process.env.BRANCH = 'pull_27';
         #echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
 
-        COVERAGE="$(cat ./tests/.phpunit.cache/code-coverage/clover.txt | grep Lines: | head -1 | grep -Po '\d+?(\.\d+)%')"
-        echo "COVERAGE=$(echo ${COVERAGE})" >> $GITHUB_ENV
+        COVERAGE_MESSAGE="$(cat ./tests/.phpunit.cache/code-coverage/clover.txt | grep Lines: | head -1 | grep -Po '\d+?(\.\d+)%')"
+        echo "COVERAGE_MESSAGE=$(echo ${COVERAGE_MESSAGE})" >> $GITHUB_ENV
+
+        COVERAGE_VALUE="$(cat ./tests/.phpunit.cache/code-coverage/clover.txt | grep Lines: | head -1 | grep -Po '\d+?(\.\d+)')"
+        echo "COVERAGE_VALUE=$(echo ${COVERAGE_VALUE})" >> $GITHUB_ENV
     - uses: schneegans/dynamic-badges-action@v1.4.0
       with:
         auth: ${{ secrets.GIST_SECRET }}
         gistID: c941c93c26d8b0f8355afef39db4e148
         filename: phpunit__${{ env.BRANCH }}.json
         label: Test Coverage
-        message: ${{ env.COVERAGE }}
+        message: ${{ env.COVERAGE_MESSAGE }}
         namedLogo: phpUnit
-        valColorRange: ${{ env.COVERAGE }}
+        valColorRange: ${{ env.COVERAGE_VALUE }}
         maxColorRange: 100
         minColorRange: 0
     - name: refresh coverage badge
