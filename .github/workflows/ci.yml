@@ -47,14 +47,15 @@ jobs:
         echo "COVERAGE_MESSAGE=$(echo ${COVERAGE_MESSAGE})" >> $GITHUB_ENV
         COVERAGE_VALUE="$(echo ${COVERAGE_MESSAGE} | grep -Po '\d+?(\.\d+)')"
         echo "COVERAGE_VALUE=$(echo ${COVERAGE_VALUE})" >> $GITHUB_ENV
+        echo "BRANCH_NAME=$(echo ${GITHUB_REF##*/})" >> $GITHUB_ENV
         echo ${COVERAGE_MESSAGE}
         echo ${COVERAGE_VALUE}
-        echo ${GITHUB_REF##*/}
+        echo ${BRANCH_NAME}
     - uses: schneegans/dynamic-badges-action@v1.4.0
       with:
         auth: ${{ secrets.GIST_SECRET }}
         gistID: ba7a3c3ca108bbe1fcaf1cd9491dd034
-        filename: phpunit__${GITHUB_REF##*/}.json
+        filename: phpunit__${{ env.BRANCH_NAME }}.json
         label: Test Coverage
         message: ${{ env.COVERAGE_MESSAGE }}
         namedLogo: phpUnit
