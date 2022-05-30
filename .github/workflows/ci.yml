@@ -27,8 +27,7 @@ jobs:
         args: --coverage-text
         memory_limit: 256M
     # Only run the coverage once
-    - if: ${{ matrix.node-version == '14.x' }}
-      name: Get Coverage for badge
+    - name: Get Coverage for badge
       run: |
         SUMMARY="$(npm test -- --coverageReporters='text-summary' | tail -2 | head -1)"
         TOKENS=($SUMMARY)
