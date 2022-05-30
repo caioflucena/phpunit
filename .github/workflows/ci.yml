@@ -45,7 +45,8 @@ jobs:
 
         COVERAGE_MESSAGE="$(cat ./tests/.phpunit.cache/code-coverage/clover.txt | grep Lines: | head -1 | grep -Po '\d+?(\.\d+)%')"
         echo "COVERAGE_MESSAGE=$(echo ${COVERAGE_MESSAGE})" >> $GITHUB_ENV
-        echo "COVERAGE_VALUE=$(echo $(echo ${SUMMARY} | grep -Po '\d+?(\.\d+)'))" >> $GITHUB_ENV
+        COVERAGE_MESSAGE="$(echo ${SUMMARY} | grep -Po '\d+?(\.\d+)')"
+        #echo "COVERAGE_VALUE=$(echo $(echo ${SUMMARY} | grep -Po '\d+?(\.\d+)'))" >> $GITHUB_ENV
         echo ${COVERAGE_MESSAGE}
         echo ${COVERAGE_VALUE}
         echo ${GITHUB_REF##*/}
