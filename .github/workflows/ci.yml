@@ -45,7 +45,7 @@ jobs:
 
         COVERAGE="$(cat ./tests/.phpunit.cache/code-coverage/clover.txt | grep Lines: | head -1 | grep -Po '\d+?(\.\d+)%')"
         echo "$(echo ${COVERAGE})" # >> $GITHUB_ENV
-        echo ${{ env.COVERAGE }}
+        echo ${COVERAGE}
     - uses: schneegans/dynamic-badges-action@v1.4.0
       with:
         auth: ${{ secrets.GIST_SECRET }}
