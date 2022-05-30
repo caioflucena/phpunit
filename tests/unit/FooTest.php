@@ -32,9 +32,13 @@ class FooTest extends TestCase
         $this->assertEquals("foo", $foo->getFoo());
     }
 
+    /**
+     * 
+     * /
     public function test_getBar()
     {
-        //$foo = new Foo("foo", "bar");
-        //$this->assertEquals("bar", $foo->getBar());
+        $foo = new Foo("foo", "bar");
+        $this->assertEquals("bar", $foo->getBar());
     }
+    /**/
 }
