@@ -26,16 +26,36 @@ jobs:
         php_extensions: xdebug
         args: --coverage-text
         memory_limit: 256M
+    # Only run the coverage once
+    - if: ${{ matrix.node-version == '14.x' }}
+      name: Get Coverage for badge
+      run: |
+        SUMMARY="$(npm test -- --coverageReporters='text-summary' | tail -2 | head -1)"
+        TOKENS=($SUMMARY)
+        # process.env.COVERAGE = '31.93%';
+        echo "COVERAGE=$(echo ${TOKENS[2]})" >> $GITHUB_ENV
+
+        # var REF = 'refs/pull/27/merge.json';
+        REF=${{ github.ref }}
+        # console.log('github.ref: ' + REF);
+        echo "github.ref: $REF"
+        # var PATHS = REF.split('/');
+        IFS='/' read -ra PATHS <<< "$REF"
+        # var BRANCH_NAME = PATHS[1] + '_' + PATHS[2];
+        BRANCH_NAME="${PATHS[1]}_${PATHS[2]}"
+        # console.log(BRANCH_NAME); // 'pull_27'
+        echo $BRANCH_NAME
+        # process.env.BRANCH = 'pull_27';
+        echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
     - uses: schneegans/dynamic-badges-action@v1.4.0
       with:
         auth: ${{ secrets.GIST_SECRET }}
         gistID: c941c93c26d8b0f8355afef39db4e148
         filename: phpunit__${{ env.BRANCH }}.json
         label: Test Coverage
-        message: ${{ env.BADGE_PERCENT }}%
+        message: ${{ env.COVERAGE }}
         color: ${{ env.BADGE_COLOR }}
         namedLogo: phpUnit
-        cacheSeconds: 0
     - name: refresh coverage badge
       uses: fjogeleit/http-request-action@master
       with:
