@@ -3,7 +3,8 @@ name: CI
 on: [push]
 
 jobs:
-  build-test:
+  unit-test:
+    name: Unit Tests
     runs-on: ubuntu-latest
 
     steps:
