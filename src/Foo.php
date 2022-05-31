@@ -11,6 +11,10 @@ class Foo
     {
         $this->foo = $foo;
         $this->bar = $bar;
+        $this->bar = ["qwe", "asd"];
+        var_dump($this->bar);
+        (object)$this->bar;
+        var_dump($this->bar);
     }
 
     public function getFoo()
