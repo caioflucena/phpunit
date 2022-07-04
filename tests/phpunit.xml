@@ -11,10 +11,11 @@
          convertDeprecationsToExceptions="true"
          failOnRisky="true"
          failOnWarning="true"
-         verbose="true">
+         verbose="true"
+>
     <testsuites>
-        <testsuite name="default">
-            <directory>./</directory>
+        <testsuite name="unit">
+            <directory>./unit</directory>
         </testsuite>
     </testsuites>
 
