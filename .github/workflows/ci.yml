@@ -21,7 +21,7 @@ jobs:
         configuration: tests/phpunit.xml
         bootstrap: tests/bootstrap.php
         php_extensions: xdebug
-        args: --testsuite=unit --coverage-text=./tests/.phpunit.cache/code-coverage/clover.txt
+        args: --coverage-text=./tests/.phpunit.cache/code-coverage/clover.txt
         memory_limit: 256M
     - name: Get Coverage for badge
       run: |
