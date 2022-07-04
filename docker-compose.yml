@@ -2,12 +2,14 @@ version: "3.2"
 services:
   mysql:
     build:
+      context: .
       dockerfile: dockerfile-mysql
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=clear
   php:
     build:
+      context: .
       dockerfile: dockerfile-php
   apache:
     build:
