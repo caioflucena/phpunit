@@ -6,6 +6,8 @@ jobs:
 
   setup:
     name: Setup
+    runs-on: ubuntu-latest
+    steps:
     - uses: mirromutth/mysql-action@v1.1
       with:
         mysql version: '5.6' # Optional, default value is "latest". The version of the MySQL
@@ -19,7 +21,6 @@ jobs:
   unit-test:
     name: Unit Tests
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - uses: php-actions/composer@v6
