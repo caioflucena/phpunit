@@ -1,0 +1,31 @@
+{
+  "name": "soapbox-core",
+  "version": "2.X",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "npx mocha tests/selenium/**/*.suite.js --no-timeouts --parallel --reporter mochawesome --require mochawesome/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PICnetInc/soapbox-core.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PICnetInc/soapbox-core/issues"
+  },
+  "homepage": "https://github.com/PICnetInc/soapbox-core#readme",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chromedriver": "^103.0.0",
+    "geckodriver": "^3.0.1",
+    "mocha": "^10.0.0",
+    "mochawesome": "^7.1.3",
+    "selenium": "^2.20.0",
+    "selenium-webdriver": "^4.3.0"
+  }
+}

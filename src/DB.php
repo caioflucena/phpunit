@@ -8,7 +8,7 @@ class DB
 
     public function __construct()
     {
-        $this->conn = new \PDO('mysql:host=localhost;dbname=clear', "root", "password");
+        $this->conn = new \PDO('mysql:host=mysql;dbname=clear', "root", "password");
     }
 
     public function getDbTableData()

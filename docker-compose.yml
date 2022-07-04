@@ -1,0 +1,21 @@
+version: "3.2"
+services:
+  mysql:
+    build:
+      dockerfile: dockerfile-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=clear
+  php:
+    build:
+      dockerfile: dockerfile-php
+  apache:
+    build:
+      context: .
+      dockerfile: dockerfile-apache
+    depends_on:
+      - php
+      - mysql
+    ports:
+      - "8080:80"
+      - "4443:443"
