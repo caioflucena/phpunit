@@ -21,8 +21,12 @@ jobs:
         configuration: tests/phpunit.xml
         bootstrap: tests/bootstrap.php
         php_extensions: xdebug
-        args: --testsuite=unit --coverage-text=./tests/.phpunit.cache/code-coverage/clover.txt
+        args: --testsuite=unit --coverage-text=./tests/.phpunit.cache/code-coverage/clover.txt --coverage-html=./tests/.phpunit.cache/code-coverage
         memory_limit: 256M
+    - uses: actions/upload-artifact@v3
+      with:
+        name: PHPUnit Report
+        path: ./tests/.phpunit.cache/code-coverage/
     - name: Get Coverage for badge
       run: |
         COVERAGE_MESSAGE="$(cat ./tests/.phpunit.cache/code-coverage/clover.txt | grep Lines: | head -1 | grep -Po '\d+?(\.\d+)%')"
@@ -60,3 +64,7 @@ jobs:
       run: npm install
     - name: Run tests
       run: yarn test
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Selenium Report
+        path: ./mochawesome-report/
